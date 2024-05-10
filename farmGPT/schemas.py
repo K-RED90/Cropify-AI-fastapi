@@ -16,7 +16,7 @@ class ResponseFormat(BaseModel):
     """
 
     answer: str = Field(
-        ..., description="A clear and concise answer to the user's query."
+        ..., description="A clear and concise answer to the user's query. Don't include links in the answer!"
     )
     links: List[MarkdownLink] = Field(
         ...,
