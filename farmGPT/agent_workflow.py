@@ -87,7 +87,7 @@ class AgentNodes(BaseModel):
                     "Please install the anthropic plugin to use the default LLM. Run `pip install langchain-anthropic`"
                 )
             claude = ChatAnthropic(
-                model="claude-3-haiku-20240307", temperature=0.5
+                model="claude-3-sonnet-20240229", temperature=0.5
             )
             main_vision_model = ChatOpenAI(model="gpt-4-vision-preview", temperature=0.4)
             vision_model_with_fallback = main_vision_model.with_fallbacks([claude])
