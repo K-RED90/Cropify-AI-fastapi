@@ -1,15 +1,14 @@
 from dashboard.crop_dashboard import CropDashboard
 from dashboard.prompt_templates import (
     FERTILIZER_SYSTEM_PROMPT,
-    PEST_AND_DISEASE_PROMPT,
     WEEDS_CONTROL_PROMPT,
-    SOIL_HEALTH_AND_CROP_MANAGEMENT_PROMPT,
+    PEST_AND_DISEASE,
+    SOIL_HEALTH_AND_CROP_MANAGEMENT
 )
 from .schema import (
-    PestAndDiseaseControl,
-    WeedControlRecommendations,
+    WeedControlPlan,
     SoilHealthAndCropManagementPlan,
-    PestDiseaseControlRecommendations
+    PestDiseaseControlRecommendations,
 )
 from .schema import FarmDataSchema
 from weather.schema import Weather
@@ -20,8 +19,9 @@ from models import load_llm
 router = APIRouter()
 
 # Initialize the LLM and CropDashboard
-llm = load_llm(model="gpt-3.5-turbo-0125")
-dashboard = CropDashboard(llm=llm)
+gpt = load_llm(model="gpt-3.5-turbo-0125")
+claude = load_llm(model="claude-3-haiku-20240307")
+dashboard = CropDashboard(llm=claude, fallback_llm=gpt)
 
 router = APIRouter()
 
@@ -32,7 +32,7 @@ async def get_fertilizer_recommendation(
 ):
     try:
         fertilizer_chain = dashboard.create_chain(
-            prompt_template=FERTILIZER_SYSTEM_PROMPT, structed_output=False
+            prompt_template=FERTILIZER_SYSTEM_PROMPT
         )
         recommendation = fertilizer_chain.invoke(
             {
@@ -50,9 +50,10 @@ async def get_pest_and_disease_control(
     farm_data: FarmDataSchema, weather_data: Weather
 ):
     try:
-        pest_chain = dashboard.create_chain(
-            prompt_template=PEST_AND_DISEASE_PROMPT,
-            structed_output=True,
+        pest_chain = CropDashboard.from_llm(
+            claude,
+            gpt,
+            PEST_AND_DISEASE,
             schema=PestDiseaseControlRecommendations,
         )
         control_plan = pest_chain.invoke(
@@ -71,11 +72,13 @@ async def get_weed_control(farm_data: FarmDataSchema, weather_data: Weather):
     try:
         weed_chain = dashboard.create_chain(
             prompt_template=WEEDS_CONTROL_PROMPT,
-            structed_output=True,
-            schema=WeedControlRecommendations,
+            schema=WeedControlPlan,
         )
         control_plan = weed_chain.invoke(
-            {"farm_data": farm_data.model_dump(), "weather_data": weather_data.model_dump()}
+            {
+                "farm_data": farm_data.model_dump(),
+                "weather_data": weather_data.model_dump(),
+            }
         )
         return control_plan
     except Exception as e:
@@ -88,8 +91,7 @@ async def get_soil_health_and_crop_management(
 ):
     try:
         soil_chain = dashboard.create_chain(
-            prompt_template=SOIL_HEALTH_AND_CROP_MANAGEMENT_PROMPT,
-            structed_output=True,
+            prompt_template=SOIL_HEALTH_AND_CROP_MANAGEMENT,
             schema=SoilHealthAndCropManagementPlan,
         )
         management_plan = soil_chain.invoke(
