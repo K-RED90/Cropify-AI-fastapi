@@ -89,7 +89,7 @@ class AgentNodes(BaseModel):
             claude = ChatAnthropic(
                 model="claude-3-sonnet-20240229", temperature=0.5
             )
-            main_vision_model = ChatOpenAI(model="gpt-4-vision-preview", temperature=0.4)
+            main_vision_model = ChatOpenAI(model="gpt-4o", temperature=0.6)
             vision_model_with_fallback = main_vision_model.with_fallbacks([claude])
         
         values["vision_tool"] = partial(pest_and_disease_tool, llm=vision_model_with_fallback)
