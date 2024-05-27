@@ -25,6 +25,6 @@ def format_weather_info(w: Any) -> str:
         "clouds": f"{clouds}%",
         "pressure": f"{pressure['press']} hPa",
         "precipitation_probability": (
-            f"{precipitation_probability}%" if precipitation_probability else None
+            f"{float(precipitation_probability)*100}%" if precipitation_probability else None
         ),
     }
