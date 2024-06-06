@@ -143,19 +143,6 @@ To get a local copy up and running follow these simple steps.
     ```sh
     python run.py
     ```
-5. Navigate to `client` folder
-    ```sh
-    cd client
-    ```
-6. Install dependencies
-    ```sh
-    npm install
-    ```
-7. Start the React app
-    ```sh
-    npm start
-    ```
-8. Open your browser and go to `http://localhost:3000/` to view the app
 
 ## License
 Cropify AI is released under the [MIT License](https://opensource.org/licenses/MIT).
@@ -169,8 +156,5 @@ Cropify AI is released under the [MIT License](https://opensource.org/licenses/M
 - [Tavily AI](https://tavily.com/)
 - [DuckDuckGo](https://duckduckgo.com/)
 - [OpenWeatherMap](https://openweathermap.org/)
-
-## 🤗 Acknowledgement
-We thank the [African Technology Forum](https://www.linkedin.com/in/african-technology-forum-638bb02aa?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app) for organizing this hackathon and [OpenAI](https://www.openai.com/) for sponsoring it, enabling us to learn and explore innovative solutions for agricultural challenges.
 
 **🌾 Happy Farming! 🚜🌞**
