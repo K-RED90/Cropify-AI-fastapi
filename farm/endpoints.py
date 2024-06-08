@@ -21,7 +21,7 @@ router = APIRouter()
 # Initialize the LLM and CropDashboard
 gpt = load_llm(model="gpt-3.5-turbo-0125")
 claude = load_llm(model="claude-3-haiku-20240307")
-dashboard = CropDashboard(llm=claude, fallback_llm=gpt)
+dashboard = CropDashboard(llm=gpt, fallback_llm=claude)
 
 router = APIRouter()
 
