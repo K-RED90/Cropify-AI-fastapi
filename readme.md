@@ -112,7 +112,7 @@ All the answers given by our AgroAssist were marked as correct, except for the q
 
 However, we manually evaluated the queries related to weather by comparing AgroAssist's responses with the responses from the weather API tool, and they were all correct. We are very excited about the idea of `augmenting a language model with real-time search engine results and a weather API` for seamless and accurate responses, and we are confident in the continued performance of our chatbot in solving agricultural problems.
 
-The runs and evaluations can be accessed at `Langsmith` with this link: [Cropify AI-ATF Hackathon](https://smith.langchain.com/public/b69761e9-ef28-4f50-bb02-abc4df6f3ae5/d/compare?selectedSessions=68321f62-abc5-4002-ac8b-0eb21091c641&baseline=undefined&activeSession=68321f62-abc5-4002-ac8b-0eb21091c641)
+The runs and evaluations can be accessed at `Langsmith` with this link: [Cropify AI-ATF](https://smith.langchain.com/public/b69761e9-ef28-4f50-bb02-abc4df6f3ae5/d/compare?selectedSessions=68321f62-abc5-4002-ac8b-0eb21091c641&baseline=undefined&activeSession=68321f62-abc5-4002-ac8b-0eb21091c641)
 
 
 ## 🛠️ Built With
@@ -124,7 +124,17 @@ The runs and evaluations can be accessed at `Langsmith` with this link: [Cropify
 - **Data Storage**: MongoDB
 - **Deployment**: Vercel
 
+## Demo Video
+[![ATF-Hackathon-Demo](https://res.cloudinary.com/marcomontalbano/image/upload/v1715393486/video_to_markdown/images/google-drive--1Dtpewpa3F40mVLb-6Npb4RpKBSOAyMS9-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://drive.google.com/file/d/1L0TrLB48xJLkxnZIJd42ShnRP3XBtNpj/view?usp=sharing "ATF-Hackathon-Demo")
+
 ## 🚀 Getting Started
+
+### Running on Vercel
+Cropify AI is deployed on Vercel. You can access the live application [here](https://cropy-competition.vercel.app).
+
+**📝 NOTE: Allow your location access when prompted so that we can fetch the weather data at your location for our "AgriAdvisor's analysis.**
+
+### Run Locally
 To get a local copy up and running follow these simple steps.
 1. Clone the repo
    ```sh
@@ -143,6 +153,19 @@ To get a local copy up and running follow these simple steps.
     ```sh
     python run.py
     ```
+5. Navigate to `client` folder
+    ```sh
+    cd client
+    ```
+6. Install dependencies
+    ```sh
+    npm install
+    ```
+7. Start the React app
+    ```sh
+    npm start
+    ```
+8. Open your browser and go to `http://localhost:3000/` to view the app
 
 ## License
 Cropify AI is released under the [MIT License](https://opensource.org/licenses/MIT).
