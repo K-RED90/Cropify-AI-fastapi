@@ -153,19 +153,6 @@ To get a local copy up and running follow these simple steps.
     ```sh
     python run.py
     ```
-5. Navigate to `client` folder
-    ```sh
-    cd client
-    ```
-6. Install dependencies
-    ```sh
-    npm install
-    ```
-7. Start the React app
-    ```sh
-    npm start
-    ```
-8. Open your browser and go to `http://localhost:3000/` to view the app
 
 ## License
 Cropify AI is released under the [MIT License](https://opensource.org/licenses/MIT).
